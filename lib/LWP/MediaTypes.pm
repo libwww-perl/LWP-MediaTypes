@@ -48,9 +48,15 @@ sub guess_media_type
 
     my $fullname;
     if (ref($file)) {
-	# assume URI object
-	$file = $file->path;
-	#XXX should handle non http:, file: or ftp: URIs differently
+        if ($file->can('path')) {
+            $file = $file->path;
+        }
+        elsif ($file->can('filename')) {
+            $fullname = $file->filename;
+        }
+        else {
+            $fullname = "" . $file;
+        }
     }
     else {
 	$fullname = $file;  # enable peek at actual file
@@ -214,9 +220,12 @@ The following functions are exported by default:
 
 =item guess_media_type( $uri )
 
-=item guess_media_type( $filename_or_uri, $header_to_modify )
+=item guess_media_type( $filename_or_object, $header_to_modify )
 
-This function tries to guess media type and encoding for a file or a URI.
+This function tries to guess media type and encoding for a file or objects that
+support the a C<path> or C<filename> method, eg, L<URI> or L<File::Temp> objects.
+When an object does not support either method, it will be stringified to
+determine the filename.
 It returns the content type, which is a string like C<"text/html">.
 In array context it also returns any content encodings applied (in the
 order used to encode the file).  You can pass a URI object

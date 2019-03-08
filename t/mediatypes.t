@@ -4,25 +4,36 @@ use strict;
 use Test;
 
 use LWP::MediaTypes;
+use File::Temp;
 
 my $url1 = URI->new('http://www/foo/test.gif?search+x#frag');
 my $url2 = URI->new('http:test');
 
 my $file = "./README";
+my $fh   = File::Temp->new();
 
-my @tests =
-(
- ["/this.dir/file.html" => "text/html",],
- ["test.gif.htm"        => "text/html",],
- ["test.txt.gz"         => "text/plain", "gzip"],
- ["gif.foo"             => "application/octet-stream",],
- ["lwp-0.03.tar.Z"      => "application/x-tar", "compress"],
- [$file		        => "text/plain",],
- ["/random/file"        => "application/octet-stream",],
- [($^O eq 'VMS'? "nl:" : "/dev/null") => "text/plain",],
- [$url1	        	=> "image/gif",],
- [$url2	        	=> "application/octet-stream",],
- ["x.ppm.Z.UU"		=> "image/x-portable-pixmap","compress","x-uuencode",],
+open (my $tmp, "<", $file);
+my $contents = <$tmp>;
+print $fh $contents;
+close($tmp);
+$fh->seek(0,0);
+
+my $nocando = TestNoCanDo->new();
+
+my @tests = (
+    ["/this.dir/file.html" => "text/html",],
+    ["test.gif.htm"        => "text/html",],
+    ["test.txt.gz"         => "text/plain", "gzip"],
+    ["gif.foo"             => "application/octet-stream",],
+    ["lwp-0.03.tar.Z"      => "application/x-tar", "compress"],
+    [$file                 => "text/plain",],
+    ["/random/file"        => "application/octet-stream",],
+    [($^O eq 'VMS' ? "nl:" : "/dev/null") => "text/plain",],
+    [$url1 => "image/gif",],
+    [$url2 => "application/octet-stream",],
+    ["x.ppm.Z.UU" => "image/x-portable-pixmap", "compress", "x-uuencode",],
+    [$fh          => "text/plain",],
+    [$nocando     => "text/plain",],
 );
 
 plan tests => @tests * 3 + 6;
@@ -107,5 +118,19 @@ BEGIN {
 	}
 	return $old;
     }
+
+    package TestNoCanDo;
+
+    sub new {
+        my $class = shift;
+        return bless {}, $class;
+    }
+
+    sub to_string {
+        return "./README"
+    }
+
+    use overload '""' => 'to_string';
+
 }
 
