@@ -10,15 +10,9 @@ my $url1 = URI->new('http://www/foo/test.gif?search+x#frag');
 my $url2 = URI->new('http:test');
 
 my $file = "./README";
-my $fh   = File::Temp->new();
-
-open (my $tmp, "<", $file);
-my $contents = <$tmp>;
-print $fh $contents;
-close($tmp);
-$fh->seek(0,0);
 
 my $nocando = TestNoCanDo->new();
+my $fh = TestFileTemp->new();
 
 my @tests = (
     ["/this.dir/file.html" => "text/html",],
@@ -131,6 +125,17 @@ BEGIN {
     }
 
     use overload '""' => 'to_string';
+
+    package TestFileTemp;
+
+    sub new {
+        my $class = shift;
+        return bless {}, $class;
+    }
+
+    sub filename {
+        return "./README"
+    }
 
 }
 
