@@ -133,7 +133,7 @@ sub media_suffix {
 }
 
 
-sub file_exts 
+sub file_exts
 {
     require File::Basename;
     my @parts = reverse split(/\./, File::Basename::basename($_[0]));
@@ -142,7 +142,7 @@ sub file_exts
 }
 
 
-sub add_type 
+sub add_type
 {
     my($type, @exts) = @_;
     for my $ext (@exts) {
@@ -163,7 +163,7 @@ sub add_encoding
 }
 
 
-sub read_media_types 
+sub read_media_types
 {
     my(@files) = @_;
 
