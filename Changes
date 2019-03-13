@@ -1,6 +1,7 @@
 Change history for LWP-MediaTypes
 
 {{$NEXT}}
+    - Convert release process to Dist::Zilla
 
 6.02      2012-02-16
     - Update the media.types database
