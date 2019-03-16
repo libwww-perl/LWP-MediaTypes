@@ -29,7 +29,7 @@ matrix:
   include:
     - env: COVERAGE=1
       perl: '5.28'
-    - perl: '5.6.2'
+    - perl: '5.6'
       env: AUTHOR_TESTING=0 RELEASE_TESTING=0
 env:
   global:
