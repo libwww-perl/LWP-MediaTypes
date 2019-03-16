@@ -4,7 +4,7 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(guess_media_type media_suffix);
 @EXPORT_OK = qw(add_type add_encoding read_media_types);
-$VERSION = "6.02";
+our $VERSION = "6.03";
 
 use strict;
 use Scalar::Util qw(blessed);
@@ -133,7 +133,7 @@ sub media_suffix {
 }
 
 
-sub file_exts 
+sub file_exts
 {
     require File::Basename;
     my @parts = reverse split(/\./, File::Basename::basename($_[0]));
@@ -142,7 +142,7 @@ sub file_exts
 }
 
 
-sub add_type 
+sub add_type
 {
     my($type, @exts) = @_;
     for my $ext (@exts) {
@@ -163,7 +163,7 @@ sub add_encoding
 }
 
 
-sub read_media_types 
+sub read_media_types
 {
     my(@files) = @_;
 
