@@ -19,7 +19,6 @@ perl:
   - '5.12'
   - '5.10'
   - '5.8'
-  - '5.6'
 cache:
   directories:
     - $HOME/perl5
@@ -30,6 +29,8 @@ matrix:
   include:
     - env: COVERAGE=1
       perl: '5.28'
+    - perl: '5.6.2'
+      env: AUTHOR_TESTING=0 RELEASE_TESTING=0
 env:
   global:
     - AUTHOR_TESTING=1
