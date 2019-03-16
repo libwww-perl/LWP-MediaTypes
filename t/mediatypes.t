@@ -2,7 +2,7 @@
 
 use strict;
 use Test::More;
-use Test::Exception;
+use Test::Fatal;
 
 use LWP::MediaTypes;
 
@@ -47,8 +47,8 @@ for (@tests) {
     is("@enc", "@expectedEnc");
 }
 
-throws_ok(
-    sub {
+like(
+    exception {
         guess_media_type({});
     },
     qr/Unable to determine filetype on unblessed refs/,
