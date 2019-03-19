@@ -1,5 +1,7 @@
 Change history for LWP-MediaTypes
 
+{{$NEXT}}
+
 6.03      2019-03-19 16:44:17Z (TRIAL RELEASE)
     - Convert release process to Dist::Zilla
     - Allow File::Temp handles to be guessed correctly (GH#1) (Wesley
