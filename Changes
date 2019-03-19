@@ -2,6 +2,8 @@ Change history for LWP-MediaTypes
 
 {{$NEXT}}
     - Convert release process to Dist::Zilla
+    - Allow File::Temp handles to be guessed correctly (GH#1) (Wesley
+      Schwengle)
 
 6.02      2012-02-16
     - Update the media.types database
