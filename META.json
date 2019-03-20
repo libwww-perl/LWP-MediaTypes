@@ -76,10 +76,10 @@
    "provides" : {
       "LWP::MediaTypes" : {
          "file" : "lib/LWP/MediaTypes.pm",
-         "version" : "6.03"
+         "version" : "6.04"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/libwww-perl/lwp-mediatypes/issues"
@@ -93,7 +93,7 @@
       "x_IRC" : "irc://irc.perl.org/#lwp",
       "x_MailingList" : "mailto:libwww@perl.org"
    },
-   "version" : "6.03",
+   "version" : "6.04",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.026001"
@@ -523,7 +523,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v6.03",
+                  "tag" : "v6.04",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v"
                },
@@ -669,7 +669,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : 1
+            "is_trial" : 0
          },
          "version" : "6.012"
       }
