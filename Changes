@@ -1,6 +1,7 @@
 Change history for LWP-MediaTypes
 
 {{$NEXT}}
+    - Full release of changes in 6.03
 
 6.03      2019-03-19 16:44:17Z (TRIAL RELEASE)
     - Convert release process to Dist::Zilla
