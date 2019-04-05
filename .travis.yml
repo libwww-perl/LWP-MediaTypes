@@ -34,9 +34,22 @@ matrix:
 env:
   global:
     - AUTHOR_TESTING=1
+    - AUTOMATED_TESTING=1
     - RELEASE_TESTING=1
 before_install:
-  - eval $(curl https://travis-perl.github.io/init) --auto --always-upgrade-modules
+  #- eval $(curl https://travis-perl.github.io/init) --auto --always-upgrade-modules
+  - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
+  - source ~/travis-perl-helpers/init
+  - build-perl
+  - perl -V
+  - build-dist
+  - cd $BUILD_DIR
+install:
+  - cpan-install --deps
+script:
+  - perl Makefile.PL
+  - make
+  - prove -b -r -s -j$(test-jobs) $(test-files)
 ### __app_cisetup__
 # ---
 # force_threaded_perls: 0
