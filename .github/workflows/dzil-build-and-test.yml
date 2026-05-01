@@ -79,7 +79,7 @@ jobs:
           name: build_dir
           path: .
       - name: install deps using cpm
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@v2
         with:
           cpanfile: "cpanfile"
           args: "--with-suggests --with-recommends --with-test"
@@ -123,7 +123,7 @@ jobs:
           name: build_dir
           path: .
       - name: install deps using cpm
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@v2
         with:
           cpanfile: "cpanfile"
           args: "--with-suggests --with-recommends --with-test"
@@ -159,7 +159,7 @@ jobs:
           name: build_dir
           path: .
       - name: install deps using cpm
-        uses: perl-actions/install-with-cpm@v1
+        uses: perl-actions/install-with-cpm@v2
         with:
           cpanfile: "cpanfile"
           args: "--with-suggests --with-recommends --with-test"
