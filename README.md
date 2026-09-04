@@ -22,7 +22,7 @@ The following functions are exported by default:
 - guess\_media\_type( $filename\_or\_object, $header\_to\_modify )
 
     This function tries to guess media type and encoding for a file or objects that
-    support the a `path` or `filename` method, eg, [URI](https://metacpan.org/pod/URI) or [File::Temp](https://metacpan.org/pod/File::Temp) objects.
+    support the a `path` or `filename` method, eg, [URI](https://metacpan.org/pod/URI) or [File::Temp](https://metacpan.org/pod/File%3A%3ATemp) objects.
     When an object does not support either method, it will be stringified to
     determine the filename.
     It returns the content type, which is a string like `"text/html"`.
