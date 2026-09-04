@@ -112,6 +112,8 @@ jobs:
           - "5.36"
           - "5.38"
           - "5.40"
+          - "5.42"
+          - "5.44"
     name: perl ${{ matrix.perl-version }} on ${{ matrix.os }}
     steps:
       - name: set up perl
