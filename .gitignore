@@ -2,6 +2,7 @@
 /.build
 !/.gitignore
 /.latest
+/.nono/
 /LWP-MediaTypes-*
 /LWP-MediaTypes-*.tar.gz
 SSL
